@@ -11,6 +11,16 @@
 #define YELLOW "\033[1;33m"
 #define BLUE "\033[1;34m"
 #define CYAN "\033[1;36m"
+#define MAGENTA "\033[1;35m"
+#define WHITE "\033[1;37m"
+#define BLACK "\033[1;30m"
+#define ORANGE "\033[1;38;5;208m"
+#define PINK "\033[1;38;5;213m"
+#define VIOLET "\033[1;38;5;129m"
+#define TEAL "\033[1;38;5;30m"
+#define GREY "\033[1;38;5;250m"
+#define BROWN "\033[1;38;5;94m"
+
 
 const char *arch_logo[] = {
     "         /\\        ",
@@ -55,6 +65,16 @@ const char *fedora_logo[] = {
     "   \\(_____/      "
 };
 
+const char *manjaro_logo[] = {
+    "  ||||||||| ||||  ",
+    "  ||||||||| ||||  ",
+    "  ||||      ||||  ",
+    "  |||| |||| ||||  ",
+    "  |||| |||| ||||  ",
+    "  |||| |||| ||||  ",
+    "  |||| |||| ||||  "
+};
+
 const char *tux_logo[] = {
     "        .--.      ",
     "       |o_o |     ",
@@ -82,6 +102,10 @@ const char **get_distro_logo(const char *distro_name, int *lines) {
         *lines = sizeof(fedora_logo) / sizeof(fedora_logo[0]);
         return fedora_logo;
     }
+    if (strstr(distro_name, "Manjaro") || strstr(distro_name, "Manjaro")) {
+        *lines = sizeof(manjaro_logo) / sizeof(manjaro_logo[0]);
+        return manjaro_logo;
+    }
     *lines = sizeof(tux_logo) / sizeof(tux_logo[0]);
     return tux_logo;
 }
@@ -92,10 +116,12 @@ const char* get_ascii_color(const char *distro) {
     if (strstr(distro, "Debian") || strstr(distro, "debian"))
         return RED;
     if (strstr(distro, "Ubuntu") || strstr(distro, "ubuntu"))
-        return YELLOW;
+        return ORANGE;
     if (strstr(distro, "Fedora") || strstr(distro, "fedora"))
         return BLUE;
-    return GREEN;
+    if (strstr(distro, "Manjaro") || strstr(distro, "Manjaro"))
+        return TEAL;
+    return YELLOW;
 }
 
 const char* get_text_color(const char *distro) {
@@ -104,10 +130,12 @@ const char* get_text_color(const char *distro) {
     if (strstr(distro, "Debian") || strstr(distro, "debian"))
         return RED;
     if (strstr(distro, "Ubuntu") || strstr(distro, "ubuntu"))
-        return YELLOW;
+        return ORANGE;
     if (strstr(distro, "Fedora") || strstr(distro, "fedora"))
         return BLUE;
-    return GREEN;
+    if (strstr(distro, "Manjaro") || strstr(distro, "Manjaro"))
+        return TEAL;
+    return YELLOW;
 }
 
 int main() {
