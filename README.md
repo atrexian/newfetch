@@ -17,7 +17,7 @@ A sleek, minimalist system info tool written in C — **fast** and **simple**.
 
 ## 📦 Installation
 
-### 📥 Arch Linux / Manjaro (AUR)
+### 📥 Arch Linux (AUR)
 ```bash
 yay -S newfetch
 ```
