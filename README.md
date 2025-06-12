@@ -2,8 +2,6 @@
 
 A sleek, minimalist system info tool written in C — **fast** and **simple**.
 
-> Inspired by Neofetch, built from scratch for modern terminal users.
-
 ![Newfetch demo](./newfetch.png)
 
 ---
