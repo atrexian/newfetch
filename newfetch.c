@@ -75,6 +75,16 @@ const char *manjaro_logo[] = {
     "  |||| |||| ||||  "
 };
 
+const char *gentoo_logo[] = {
+    "     _-----_      ",
+    "    (       \\     ",
+    "    \\    0   \\    ",
+    "     \\        )   ",
+    "     /      _/    ",
+    "    (     _-      ",
+    "    \\____-        "
+};
+
 const char *tux_logo[] = {
     "        .--.      ",
     "       |o_o |     ",
@@ -106,6 +116,10 @@ const char **get_distro_logo(const char *distro_name, int *lines) {
         *lines = sizeof(manjaro_logo) / sizeof(manjaro_logo[0]);
         return manjaro_logo;
     }
+    if (strstr(distro_name, "Gentoo") || strstr(distro_name, "Gentoo")) {
+        *lines = sizeof(gentoo_logo) / sizeof(gentoo_logo[0]);
+        return gentoo_logo;
+    }
     *lines = sizeof(tux_logo) / sizeof(tux_logo[0]);
     return tux_logo;
 }
@@ -121,6 +135,8 @@ const char* get_ascii_color(const char *distro) {
         return BLUE;
     if (strstr(distro, "Manjaro") || strstr(distro, "Manjaro"))
         return TEAL;
+    if (strstr(distro, "Gentoo") || strstr(distro, "Gentoo"))
+        return MAGENTA;
     return YELLOW;
 }
 
@@ -135,6 +151,8 @@ const char* get_text_color(const char *distro) {
         return BLUE;
     if (strstr(distro, "Manjaro") || strstr(distro, "Manjaro"))
         return TEAL;
+    if (strstr(distro, "Gentoo") || strstr(distro, "Gentoo"))
+        return MAGENTA;
     return YELLOW;
 }
 
