@@ -77,12 +77,12 @@ const char *manjaro_logo[] = {
 
 const char *gentoo_logo[] = {
     "     _-----_      ",
-    "    (       \\     ",
-    "    \\    0   \\    ",
-    "     \\        )   ",
+    "    (       \\    ",
+    "    \\    0   \\  ",
+    "     \\        )  ",
     "     /      _/    ",
     "    (     _-      ",
-    "    \\____-        "
+    "    \\____-       "
 };
 
 const char *tux_logo[] = {
