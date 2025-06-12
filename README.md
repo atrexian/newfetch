@@ -2,7 +2,7 @@
 
 A sleek, minimalist system info tool written in C — **fast** and **simple**.
 
-> Inspired by Neofetch, built from scratch for modern terminal users who want control without the bloat.
+> Inspired by Neofetch, built from scratch for modern terminal users.
 
 ![Newfetch demo](./screenshot.png)
 
@@ -10,7 +10,7 @@ A sleek, minimalist system info tool written in C — **fast** and **simple**.
 
 ## ✨ Features
 
-- 🧠 Shows essential system info (OS, Kernel, Uptime, CPU, GPU, RAM, Shell, DE/WM, Disk, etc.)
+- 🧠 Shows essential system info (User, Host, Distro, Kernel, Arch, Uptime, CPU and RAM)
 - 🎨 Colorful output with ASCII art and themed palettes
 - 🪶 Lightweight with zero runtime dependencies
 - 🧩 Modular codebase and simple build process
