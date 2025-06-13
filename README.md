@@ -2,7 +2,7 @@
 
 A sleek, minimalist system info tool written in C — **fast** and **simple**.
 
-![Newfetch preview](./preview.png)
+![Newfetch demo](./demo.png)
 
 ---
 
