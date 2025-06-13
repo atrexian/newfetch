@@ -12,14 +12,8 @@
 #define BLUE "\033[1;34m"
 #define CYAN "\033[1;36m"
 #define MAGENTA "\033[1;35m"
-#define WHITE "\033[1;37m"
-#define BLACK "\033[1;30m"
 #define ORANGE "\033[1;38;5;208m"
-#define PINK "\033[1;38;5;213m"
-#define VIOLET "\033[1;38;5;129m"
 #define TEAL "\033[1;38;5;30m"
-#define GREY "\033[1;38;5;250m"
-#define BROWN "\033[1;38;5;94m"
 #define LIME "\033[1;38;5;118m"
 
 
