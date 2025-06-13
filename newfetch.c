@@ -20,6 +20,7 @@
 #define TEAL "\033[1;38;5;30m"
 #define GREY "\033[1;38;5;250m"
 #define BROWN "\033[1;38;5;94m"
+#define LIME "\033[1;38;5;118m"
 
 
 const char *arch_logo[] = {
@@ -85,6 +86,16 @@ const char *gentoo_logo[] = {
     "    \\____-       "
 };
 
+const char *linuxmint_logo[] = {
+    "  ___________     ",
+    "  |_          \\  ",
+    "    | | _____ |   ",
+    "    | | | | | |   ",
+    "    | | | | | |   ",
+    "    | \\_____/ |  ",
+    "    \\_________/  "
+};
+
 const char *tux_logo[] = {
     "        .--.      ",
     "       |o_o |     ",
@@ -120,6 +131,10 @@ const char **get_distro_logo(const char *distro_name, int *lines) {
         *lines = sizeof(gentoo_logo) / sizeof(gentoo_logo[0]);
         return gentoo_logo;
     }
+    if (strstr(distro_name, "Linux Mint") || strstr(distro_name, "Linux Mint")) {
+        *lines = sizeof(linuxmint_logo) / sizeof(linuxmint_logo[0]);
+        return linuxmint_logo;
+    }
     *lines = sizeof(tux_logo) / sizeof(tux_logo[0]);
     return tux_logo;
 }
@@ -137,6 +152,8 @@ const char* get_ascii_color(const char *distro) {
         return TEAL;
     if (strstr(distro, "Gentoo") || strstr(distro, "Gentoo"))
         return MAGENTA;
+    if (strstr(distro, "Linux Mint") || strstr(distro, "Linux Mint"))
+        return LIME;
     return YELLOW;
 }
 
@@ -153,6 +170,8 @@ const char* get_text_color(const char *distro) {
         return TEAL;
     if (strstr(distro, "Gentoo") || strstr(distro, "Gentoo"))
         return MAGENTA;
+    if (strstr(distro, "Linux Mint") || strstr(distro, "Linux Mint"))
+        return LIME;
     return YELLOW;
 }
 
