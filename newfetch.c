@@ -90,6 +90,16 @@ const char *linuxmint_logo[] = {
     "    \\_________/  "
 };
 
+const char *opensuse_logo[] = {
+    "    _______       ",
+    "    __|   __ \\   ",
+    "         / .\\ \\ ",
+    "         \\__/ |  ",
+    "       _______|   ",
+    "       \\_______  ",
+    "    __________/   "
+};
+
 const char *tux_logo[] = {
     "        .--.      ",
     "       |o_o |     ",
@@ -129,6 +139,10 @@ const char **get_distro_logo(const char *distro_name, int *lines) {
         *lines = sizeof(linuxmint_logo) / sizeof(linuxmint_logo[0]);
         return linuxmint_logo;
     }
+    if (strstr(distro_name, "openSUSE") || strstr(distro_name, "openSUSE")) {
+        *lines = sizeof(opensuse_logo) / sizeof(opensuse_logo[0]);
+        return opensuse_logo;
+    }
     *lines = sizeof(tux_logo) / sizeof(tux_logo[0]);
     return tux_logo;
 }
@@ -148,6 +162,8 @@ const char* get_ascii_color(const char *distro) {
         return MAGENTA;
     if (strstr(distro, "Linux Mint") || strstr(distro, "Linux Mint"))
         return LIME;
+    if (strstr(distro, "openSUSE") || strstr(distro, "openSUSE"))
+        return LIME;
     return YELLOW;
 }
 
@@ -165,6 +181,8 @@ const char* get_text_color(const char *distro) {
     if (strstr(distro, "Gentoo") || strstr(distro, "Gentoo"))
         return MAGENTA;
     if (strstr(distro, "Linux Mint") || strstr(distro, "Linux Mint"))
+        return LIME;
+    if (strstr(distro, "openSUSE") || strstr(distro, "openSUSE"))
         return LIME;
     return YELLOW;
 }
