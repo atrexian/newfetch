@@ -45,6 +45,7 @@ However, only the following distros have dedicated ASCII logos included in the s
     - 🟩 Linux Mint
 - 🟦 Fedora
 - 🟪 Gentoo
+- 🟩 openSUSE
 
 For all other distros, Newfetch will gracefully fall back to the classic **Tux** logo 🐧.
 
