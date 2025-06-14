@@ -16,7 +16,6 @@
 #define TEAL "\033[1;38;5;30m"
 #define LIME "\033[1;38;5;118m"
 
-
 const char *arch_logo[] = {
     "         /\\        ",
     "        /  \\       ",
