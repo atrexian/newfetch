@@ -40,6 +40,7 @@ However, only the following distros have dedicated ASCII logos included in the s
 
 - 🟦 Arch Linux
     - 🟩 Manjaro
+    - 🟩 EndeavourOS
 - 🟥 Debian
 - 🟦 Fedora
 - 🟪 Gentoo
