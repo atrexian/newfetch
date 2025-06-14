@@ -40,14 +40,14 @@ const char *debian_logo[] = {
 
 
 const char *endeavouros_logo[] = {
-    "                  ",
-    "                  ",
-    "                  ",
-    "                  ",
-    "                  ",
-    "                  ",
-    "                  ",
-    "                  "
+    "        __        ",
+    "      /    \\     ",
+    "     /      )_    ",
+    "    /      _) )   ",
+    "   (     _)_) /   ",
+    "    \\  _)_)  /   ",
+    "     \\      /    ",
+    "      \\____/     "
 };
 
 const char *ubuntu_logo[] = {
