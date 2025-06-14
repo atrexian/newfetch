@@ -110,81 +110,32 @@ const char *tux_logo[] = {
     "    \\___)=(___/  "
 };
 
-const char **get_distro_logo(const char *distro_name, int *lines) {
-    if (strstr(distro_name, "Arch") || strstr(distro_name, "arch")) {
-        *lines = sizeof(arch_logo) / sizeof(arch_logo[0]);
-        return arch_logo;
-    }
-    if (strstr(distro_name, "Debian") || strstr(distro_name, "debian")) {
-        *lines = sizeof(debian_logo) / sizeof(debian_logo[0]);
-        return debian_logo;
-    }
-    if (strstr(distro_name, "Ubuntu") || strstr(distro_name, "ubuntu")) {
-        *lines = sizeof(ubuntu_logo) / sizeof(ubuntu_logo[0]);
-        return ubuntu_logo;
-    }
-    if (strstr(distro_name, "Fedora") || strstr(distro_name, "fedora")) {
-        *lines = sizeof(fedora_logo) / sizeof(fedora_logo[0]);
-        return fedora_logo;
-    }
-    if (strstr(distro_name, "Manjaro") || strstr(distro_name, "Manjaro")) {
-        *lines = sizeof(manjaro_logo) / sizeof(manjaro_logo[0]);
-        return manjaro_logo;
-    }
-    if (strstr(distro_name, "Gentoo") || strstr(distro_name, "Gentoo")) {
-        *lines = sizeof(gentoo_logo) / sizeof(gentoo_logo[0]);
-        return gentoo_logo;
-    }
-    if (strstr(distro_name, "Linux Mint") || strstr(distro_name, "Linux Mint")) {
-        *lines = sizeof(linuxmint_logo) / sizeof(linuxmint_logo[0]);
-        return linuxmint_logo;
-    }
-    if (strstr(distro_name, "openSUSE") || strstr(distro_name, "openSUSE")) {
-        *lines = sizeof(opensuse_logo) / sizeof(opensuse_logo[0]);
-        return opensuse_logo;
-    }
-    *lines = sizeof(tux_logo) / sizeof(tux_logo[0]);
-    return tux_logo;
-}
+typedef struct {
+    const char *name;
+    const char **logo;
+    int logo_lines;
+    const char *ascii_color;
+    const char *text_color;
+} DistroInfo;
 
-const char* get_ascii_color(const char *distro) {
-    if (strstr(distro, "Arch") || strstr(distro, "arch"))
-        return CYAN;
-    if (strstr(distro, "Debian") || strstr(distro, "debian"))
-        return RED;
-    if (strstr(distro, "Ubuntu") || strstr(distro, "ubuntu"))
-        return ORANGE;
-    if (strstr(distro, "Fedora") || strstr(distro, "fedora"))
-        return BLUE;
-    if (strstr(distro, "Manjaro") || strstr(distro, "Manjaro"))
-        return TEAL;
-    if (strstr(distro, "Gentoo") || strstr(distro, "Gentoo"))
-        return MAGENTA;
-    if (strstr(distro, "Linux Mint") || strstr(distro, "Linux Mint"))
-        return LIME;
-    if (strstr(distro, "openSUSE") || strstr(distro, "openSUSE"))
-        return LIME;
-    return YELLOW;
-}
+const DistroInfo distros[] = {
+    { "arch",      arch_logo,      sizeof(arch_logo)/sizeof(arch_logo[0]),       CYAN,    CYAN },
+    { "debian",    debian_logo,    sizeof(debian_logo)/sizeof(debian_logo[0]),   RED,     RED },
+    { "ubuntu",    ubuntu_logo,    sizeof(ubuntu_logo)/sizeof(ubuntu_logo[0]),   ORANGE,  ORANGE },
+    { "fedora",    fedora_logo,    sizeof(fedora_logo)/sizeof(fedora_logo[0]),   BLUE,    BLUE },
+    { "manjaro",   manjaro_logo,   sizeof(manjaro_logo)/sizeof(manjaro_logo[0]), TEAL,    TEAL },
+    { "gentoo",    gentoo_logo,    sizeof(gentoo_logo)/sizeof(gentoo_logo[0]),   MAGENTA, MAGENTA },
+    { "linux mint",linuxmint_logo, sizeof(linuxmint_logo)/sizeof(linuxmint_logo[0]), LIME, LIME },
+    { "opensuse",  opensuse_logo,  sizeof(opensuse_logo)/sizeof(opensuse_logo[0]), LIME,  LIME }
+};
 
-const char* get_text_color(const char *distro) {
-    if (strstr(distro, "Arch") || strstr(distro, "arch"))
-        return CYAN;
-    if (strstr(distro, "Debian") || strstr(distro, "debian"))
-        return RED;
-    if (strstr(distro, "Ubuntu") || strstr(distro, "ubuntu"))
-        return ORANGE;
-    if (strstr(distro, "Fedora") || strstr(distro, "fedora"))
-        return BLUE;
-    if (strstr(distro, "Manjaro") || strstr(distro, "Manjaro"))
-        return TEAL;
-    if (strstr(distro, "Gentoo") || strstr(distro, "Gentoo"))
-        return MAGENTA;
-    if (strstr(distro, "Linux Mint") || strstr(distro, "Linux Mint"))
-        return LIME;
-    if (strstr(distro, "openSUSE") || strstr(distro, "openSUSE"))
-        return LIME;
-    return YELLOW;
+const DistroInfo* find_distro_info(const char *distro_name) {
+    for (size_t i = 0; i < sizeof(distros)/sizeof(distros[0]); ++i) {
+        if (strcasestr(distro_name, distros[i].name)) {
+            return &distros[i];
+        }
+    }
+    return NULL;
 }
 
 int main() {
@@ -216,11 +167,19 @@ int main() {
         fclose(fp);
     }
 
-    int logo_lines;
-    const char **logo = get_distro_logo(distro, &logo_lines);
+    const DistroInfo *info_ptr = find_distro_info(distro);
 
-    const char *ascii_color = get_ascii_color(distro);
-    const char *text_color = get_text_color(distro);
+    const char **logo = tux_logo;
+    int logo_lines = sizeof(tux_logo)/sizeof(tux_logo[0]);
+    const char *ascii_color = YELLOW;
+    const char *text_color = YELLOW;
+
+    if (info_ptr) {
+        logo = info_ptr->logo;
+        logo_lines = info_ptr->logo_lines;
+        ascii_color = info_ptr->ascii_color;
+        text_color = info_ptr->text_color;
+    }
 
     char info[10][256];
     snprintf(info[0], sizeof(info[0]), "%sUser:%s %s", text_color, RESET, username);
@@ -246,9 +205,7 @@ int main() {
     if (cpu_fp) {
         char line[512];
         while (fgets(line, sizeof(line), cpu_fp)) {
-            if (strncmp(line, "processor", 9) == 0) {
-                cores++;
-            }
+            if (strncmp(line, "processor", 9) == 0) cores++;
             if (strncmp(line, "model name", 10) == 0 && cpu_model[0] == '\0') {
                 char *colon = strchr(line, ':');
                 if (colon) {
@@ -259,8 +216,6 @@ int main() {
             }
         }
         fclose(cpu_fp);
-    } else {
-        fprintf(stderr, "Nelze otevřít /proc/cpuinfo\n");
     }
 
     if (cpu_model[0] == '\0') {
@@ -281,18 +236,14 @@ int main() {
         }
         fclose(mem_fp);
     }
+
     unsigned long used = mem_total - mem_free - buffers - cached;
     float used_percent = 0;
     if (mem_total > 0)
         used_percent = (used / (float)mem_total) * 100;
 
-    const char *ram_color;
-    if (used_percent > 80.0)
-        ram_color = RED;
-    else if (used_percent > 60.0)
-        ram_color = YELLOW;
-    else
-        ram_color = GREEN;
+    const char *ram_color = (used_percent > 80.0) ? RED :
+                            (used_percent > 60.0) ? YELLOW : GREEN;
 
     snprintf(info[7], sizeof(info[7]), "%sMemory:%s %s%.2f%% used%s (%.2f MB / %.2f MB)",
              text_color, RESET, ram_color, used_percent, RESET, used / 1024.0, mem_total / 1024.0);
