@@ -15,6 +15,7 @@
 #define ORANGE "\033[1;38;5;208m"
 #define TEAL "\033[1;38;5;30m"
 #define LIME "\033[1;38;5;118m"
+#define MINT "\033[1;38;5;48m"
 
 const char *arch_logo[] = {
     "         /\\        ",
@@ -99,6 +100,16 @@ const char *opensuse_logo[] = {
     "    __________/   "
 };
 
+const char *void_logo[] = {
+    "      _______     ",
+    "   _ \\______ -   ",
+    "  | \\  ___  \\ | ",
+    "  | | /   \\ | |  ",
+    "  | | \\___/ | |  ",
+    "  | \\______ \\_| ",
+    "   -_______\\     "
+};
+
 const char *tux_logo[] = {
     "        .--.      ",
     "       |o_o |     ",
@@ -125,7 +136,8 @@ const DistroInfo distros[] = {
     { "manjaro",   manjaro_logo,   sizeof(manjaro_logo)/sizeof(manjaro_logo[0]), TEAL,    TEAL },
     { "gentoo",    gentoo_logo,    sizeof(gentoo_logo)/sizeof(gentoo_logo[0]),   MAGENTA, MAGENTA },
     { "linux mint",linuxmint_logo, sizeof(linuxmint_logo)/sizeof(linuxmint_logo[0]), LIME, LIME },
-    { "opensuse",  opensuse_logo,  sizeof(opensuse_logo)/sizeof(opensuse_logo[0]), LIME,  LIME }
+    { "opensuse",  opensuse_logo,  sizeof(opensuse_logo)/sizeof(opensuse_logo[0]), LIME,  LIME },
+    { "void",  void_logo,  sizeof(void_logo)/sizeof(void_logo[0]), MINT,  MINT }
 };
 
 const DistroInfo* find_distro_info(const char *distro_name) {
