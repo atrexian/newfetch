@@ -38,6 +38,18 @@ const char *debian_logo[] = {
     "                  "
 };
 
+
+const char *endeavouros_logo[] = {
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  "
+};
+
 const char *ubuntu_logo[] = {
     "                  ",
     "         _        ",
@@ -137,7 +149,8 @@ const DistroInfo distros[] = {
     { "gentoo",    gentoo_logo,    sizeof(gentoo_logo)/sizeof(gentoo_logo[0]),   MAGENTA, MAGENTA },
     { "linux mint",linuxmint_logo, sizeof(linuxmint_logo)/sizeof(linuxmint_logo[0]), LIME, LIME },
     { "opensuse",  opensuse_logo,  sizeof(opensuse_logo)/sizeof(opensuse_logo[0]), LIME,  LIME },
-    { "void",  void_logo,  sizeof(void_logo)/sizeof(void_logo[0]), MINT,  MINT }
+    { "void",      void_logo,      sizeof(void_logo)/sizeof(void_logo[0]), MINT,  MINT },
+    { "endeavour", endeavouros_logo, sizeof(endeavouros_logo)/sizeof(endeavouros_logo[0]), MAGENTA, CYAN }
 };
 
 const DistroInfo* find_distro_info(const char *distro_name) {
