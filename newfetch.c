@@ -197,7 +197,7 @@ int main() {
     snprintf(info[1], sizeof(info[1]), "%sHost:%s %s", text_color, RESET, hostname);
     snprintf(info[2], sizeof(info[2]), "%sDistro:%s %s", text_color, RESET, distro);
     snprintf(info[3], sizeof(info[3]), "%sKernel:%s %s %s", text_color, RESET, uts.sysname, uts.release);
-    snprintf(info[4], sizeof(info[4]), "%sArchitecture:%s %s", text_color, RESET, uts.machine);
+    snprintf(info[4], sizeof(info[4]), "%sArch:%s %s", text_color, RESET, uts.machine);
 
     FILE *uptime_fp = fopen("/proc/uptime", "r");
     double uptime_seconds = 0;
